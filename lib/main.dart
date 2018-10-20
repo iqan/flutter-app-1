@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_app1/screens/hello.dart';
-import 'package:flutter_app1/screens/tabbed.dart';
+import 'package:flutter_app1/screens/tabbed/tabbed.dart';
 
 void main() => runApp(new MyApp());
 

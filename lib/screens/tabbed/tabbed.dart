@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app1/screens/tabbed/food.dart';
+import 'package:flutter_app1/screens/tabbed/restaurants.dart';
+import 'package:flutter_app1/screens/tabbed/settings.dart';
 
 class Tabbed extends StatelessWidget {
   @override
@@ -9,18 +12,18 @@ class Tabbed extends StatelessWidget {
           appBar: AppBar(
             bottom: TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.directions_car)),
-                Tab(icon: Icon(Icons.directions_transit)),
-                Tab(icon: Icon(Icons.directions_bike)),
+                Tab(icon: Icon(Icons.fastfood)),
+                Tab(icon: Icon(Icons.restaurant)),
+                Tab(icon: Icon(Icons.settings)),
               ],
             ),
             title: Text('Tabs Demo'),
           ),
           body: TabBarView(
             children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
+              new Food(),
+              new Restaurants(),
+              new Settings(),
             ],
           ),
         ),
