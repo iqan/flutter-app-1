@@ -1,2 +1,8 @@
 # flutter-app-1
-First flutter app for learning purpose
+
+My first Flutter application for learning purpose.
+
+## Flutter: Getting Started
+
+For help getting started with Flutter, view our online
+[documentation](https://flutter.io/).
