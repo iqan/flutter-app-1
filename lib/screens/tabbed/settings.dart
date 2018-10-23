@@ -10,10 +10,19 @@ class Settings extends StatelessWidget {
 
     return new CupertinoSettings(<Widget>[
       new CSHeader('Brightness'),
-      new CSWidget(new CupertinoSlider(value: 0.5), style: brightnessStyle),
+      new CSWidget(
+          new CupertinoSlider(
+            value: 0.5,
+            onChanged: (e) => {},
+          ),
+          style: brightnessStyle
+      ),
       new CSControl(
         'Auto brightness',
-        new CupertinoSwitch(value: true),
+        new CupertinoSwitch(
+          value: true,
+          onChanged: (e) => {},
+        ),
         style: brightnessStyle,
       ),
       new CSHeader('Selection'),
