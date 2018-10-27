@@ -7,19 +7,11 @@ class Hello extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Iqans App'),
-      ),
-      body: new Material(
-        child: new Center(
-          child: Text(
-            'Hello world!',
-            style: TextStyle(
-              fontSize: 36.0,
-              color: Colors.blue
-            ),
-            ),
+    return Material(
+      child: Center(
+        child: Text(
+          'Hello world!',
+          style: TextStyle(fontSize: 36.0, color: Colors.blue),
         ),
       ),
     );

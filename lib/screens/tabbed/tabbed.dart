@@ -10,14 +10,13 @@ class Tabbed extends StatelessWidget {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            bottom: TabBar(
+            title: TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.fastfood)),
                 Tab(icon: Icon(Icons.restaurant)),
                 Tab(icon: Icon(Icons.settings)),
               ],
             ),
-            title: Text('Tabs Demo'),
           ),
           body: TabBarView(
             children: [
