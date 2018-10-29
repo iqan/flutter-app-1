@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app1/model/drawer-item.dart';
 import 'package:flutter_app1/screens/hello.dart';
 import 'package:flutter_app1/screens/tabbed/tabbed.dart';
-
-class DrawerItem {
-  String title;
-  IconData icon;
-  DrawerItem(this.title, this.icon);
-}
 
 class Home extends StatefulWidget {
   final drawerItems = [
