@@ -24,7 +24,7 @@ class Data {
 
   Future<Database> get db async {
     if (_db == null) {
-      initializeDb();
+      _db = await initializeDb();
     }
     return _db;
   }
@@ -38,7 +38,7 @@ class Data {
       
   void _createDb(Database db, int version) async {
     String createTableQuery = "CREATE TABLE $tableTodo($columnId INTEGER PRIMARY KEY," + 
-      "$columnTitle TEXT, $columnDescription TEXT, $columnPriority INTEGER, $columnDate TEXT";
+      "$columnTitle TEXT, $columnDescription TEXT, $columnPriority INTEGER, $columnDate TEXT)";
     await db.execute(createTableQuery);
   }
 
@@ -53,6 +53,7 @@ class Data {
     var result = await db.query(tableTodo, orderBy: columnPriority);
     return result;
   }
+  
   Future<int> getCount() async {
     Database db = await this.db;
     var result = Sqflite.firstIntValue(

@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app1/model/drawer-item.dart';
 import 'package:flutter_app1/screens/hello.dart';
 import 'package:flutter_app1/screens/tabbed/tabbed.dart';
+import 'package:flutter_app1/screens/todo/todo.dart';
 
 class Home extends StatefulWidget {
   final drawerItems = [
     new DrawerItem("Hello World", Icons.home),
     new DrawerItem("Tabbed View", Icons.tab),
+    new DrawerItem("ToDo App", Icons.calendar_today),
   ];
 
   @override
@@ -22,6 +24,8 @@ class HomeState extends State<Home> {
         return new Hello();
       case 1:
         return new Tabbed();
+      case 2:
+        return new TodoList();
       default:
         return new Text("Invalid view selected");
     }
