@@ -53,7 +53,7 @@ class Todo {
     map["description"] = _description;
     map["priority"] = _priority;
     map["date"] = _date;
-    if (id == null) {
+    if (id != null) {
       map["id"] = _id;
     }
     return map;

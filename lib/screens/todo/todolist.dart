@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app1/data/data.dart';
 import 'package:flutter_app1/model/todo.dart';
+import 'package:flutter_app1/screens/todo/tododetails.dart';
 
 class TodoList extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class TodoListState extends State<TodoList> {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
-            debugPrint('add new todo');
+            Navigator.push(context, MaterialPageRoute(builder: (context) => TodoDetails('Add', Todo('', 3, ''))));
           },
           tooltip: 'Add new To-Do',
         )
@@ -60,7 +61,7 @@ class TodoListState extends State<TodoList> {
             title: Text(current.title),
             subtitle: Text(current.date),
             onTap: () {
-              debugPrint('tapped on ' + current.title);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => TodoDetails('Update', current)));
             },
           ),
         );
