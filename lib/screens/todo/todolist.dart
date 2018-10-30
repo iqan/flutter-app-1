@@ -22,7 +22,7 @@ class TodoListState extends State<TodoList> {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => TodoDetails('Add', Todo('', 3, ''))));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => TodoDetails('Add', Todo('', -1, ''))));
           },
           tooltip: 'Add new To-Do',
         )
