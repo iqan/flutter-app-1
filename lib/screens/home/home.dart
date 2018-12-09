@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app1/model/drawer-item.dart';
+import 'package:flutter_app1/screens/flare/flare.dart';
 import 'package:flutter_app1/screens/hello.dart';
 import 'package:flutter_app1/screens/tabbed/tabbed.dart';
 import 'package:flutter_app1/screens/todo/todolist.dart';
@@ -9,6 +10,7 @@ class Home extends StatefulWidget {
     new DrawerItem("Hello World", Icons.home),
     new DrawerItem("Tabbed View", Icons.tab),
     new DrawerItem("ToDo App", Icons.calendar_today),
+    new DrawerItem("Flare Demo", Icons.flare),
   ];
 
   @override
@@ -26,6 +28,8 @@ class HomeState extends State<Home> {
         return new Tabbed();
       case 2:
         return new TodoList();
+      case 3:
+        return new FlareDemo();
       default:
         return new Text("Invalid view selected");
     }
