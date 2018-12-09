@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_app1/model/todo.dart';
@@ -40,6 +41,10 @@ class Data {
     String createTableQuery = "CREATE TABLE $tableTodo($columnId INTEGER PRIMARY KEY," + 
       "$columnTitle TEXT, $columnDescription TEXT, $columnPriority INTEGER, $columnDate TEXT)";
     await db.execute(createTableQuery);
+    String now = DateFormat().add_yMd().format(DateTime.now());
+    await db.insert(tableTodo, Todo('Learn flutter', 1, now, '').toMap());
+    await db.insert(tableTodo, Todo('Build/test app', 2, now, '').toMap());
+    await db.insert(tableTodo, Todo('Play PUBG', 3, now, '').toMap());
   }
 
   Future<int> insertTodo(Todo todo) async {
@@ -64,14 +69,14 @@ class Data {
 
   Future<int> updateTodo(Todo todo) async {
     Database db = await this.db;
-    var result = await db.update(tableTodo, todo.toMap(), where: columnId, whereArgs: [todo.id]);
+    var result = await db.update(tableTodo, todo.toMap(), where: '$columnId = ?', whereArgs: [todo.id]);
     return result;
   }
 
   
   Future<int> deleteTodo(int id) async {
     Database db = await this.db;
-    var result = await db.delete(tableTodo, where: columnId, whereArgs: [id]);
+    var result = await db.delete(tableTodo, where: '$columnId = ?', whereArgs: [id]);
     return result;
   }
 }

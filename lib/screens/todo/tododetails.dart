@@ -21,7 +21,7 @@ class TodoDetailsState extends State<TodoDetails> {
   TodoDetailsState(this.todo);
 
   final priorities = ['High', 'Medium', 'Low'];
-  String priority = 'Low';
+  String priority = 'Not set';
   Data data = Data();
 
   TextEditingController titleController = TextEditingController();
@@ -70,29 +70,44 @@ class TodoDetailsState extends State<TodoDetails> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(
-                  top: 15.0, bottom: 15.0, left: 10.0, right: 10.0),
-              child: DropdownButton<String>(
-                items: priorities.map((value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                style: textStyle,
-                value: retrivePriority(todo.priority),
-                onChanged: (value) => updatePrioriy(value),
+              padding: EdgeInsets.only(bottom: 15.0),
+              child: Center(
+                child: DropdownButton<String>(
+                  items: priorities.map((value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  style: textStyle,
+                  value: retrivePriority(todo.priority),
+                  onChanged: (value) => updatePrioriy(value),
+                  hint: Text('Priority'),
+                ),
               ),
             ),
-            Center(
-              child: RaisedButton(
-                child: Text(
-                  'Save',
-                  style: TextStyle(color: Colors.white, fontSize: 24.0),
+            Row(
+              children: <Widget>[
+                RaisedButton(
+                  child: Text(
+                    'Save',
+                    style: TextStyle(color: Colors.white, fontSize: 24.0),
+                  ),
+                  onPressed: () => save(),
+                  color: Colors.green,
+                  padding: EdgeInsets.all(10.0),
                 ),
-                onPressed: () => save(),
-                color: Colors.green,
-              ),
+                RaisedButton(
+                  child: Text(
+                    'Delete',
+                    style: TextStyle(color: Colors.white, fontSize: 24.0),
+                  ),
+                  onPressed: () => delete(),
+                  color: Colors.red,
+                  padding: EdgeInsets.all(10.0),
+                ),
+              ],
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             ),
           ],
         ),
@@ -107,8 +122,22 @@ class TodoDetailsState extends State<TodoDetails> {
         showSaveSuccess(context);
       });
     } else {
-      data.insertTodo(todo).then((result) {
-        showSaveSuccess(context);
+      if (todo.title == '' || todo.priority == -1) {
+        showSaveError(context);
+      } else {
+        data.insertTodo(todo).then((result) {
+          showSaveSuccess(context);
+        });
+      }
+    }
+  }
+
+  void delete() {
+    if (todo.id == null) {
+      return;
+    } else {
+      data.deleteTodo(todo.id).then((result) {
+        showDeleteSuccess(context);
       });
     }
   }
@@ -117,6 +146,22 @@ class TodoDetailsState extends State<TodoDetails> {
     AlertDialog alertDialog = AlertDialog(
       title: Text('Save'),
       content: Text('ToDo saved'),
+    );
+    showDialog(context: context, builder: (_) => alertDialog);
+  }
+
+  void showDeleteSuccess(BuildContext context) {
+    AlertDialog alertDialog = AlertDialog(
+      title: Text('Delete'),
+      content: Text('ToDo deleted'),
+    );
+    showDialog(context: context, builder: (_) => alertDialog);
+  }
+
+  void showSaveError(BuildContext context) {
+    AlertDialog alertDialog = AlertDialog(
+      title: Text('Error'),
+      content: Text('Please enter title and select priority.'),
     );
     showDialog(context: context, builder: (_) => alertDialog);
   }
@@ -142,6 +187,9 @@ class TodoDetailsState extends State<TodoDetails> {
   }
 
   String retrivePriority(int value) {
+    if (value < 0 || value > priorities.length) {
+      return null;
+    }
     return priorities[value - 1];
   }
 
