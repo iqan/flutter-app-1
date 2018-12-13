@@ -62,7 +62,7 @@ class Data {
   Future<int> getCount() async {
     Database db = await this.db;
     var result = Sqflite.firstIntValue(
-      await db.execute('SELECT COUNT(*) FROM $tableTodo')
+      await db.query('SELECT COUNT(*) FROM $tableTodo')
     );
     return result;
   }
