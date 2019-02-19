@@ -2,6 +2,8 @@
 
 My first Flutter application for learning purpose.
 
+[![Codemagic build status](https://api.codemagic.io/apps/5c6bc413eae08d000a924471/5c6bc413eae08d000a924470/status_badge.svg)](https://codemagic.io/apps/5c6bc413eae08d000a924471/5c6bc413eae08d000a924470/latest_build)
+
 ## Flutter: Getting Started
 
 For help getting started with Flutter, view our online
