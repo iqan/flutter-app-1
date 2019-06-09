@@ -17,3 +17,10 @@ b. Tabbed
 
 ### 3rd party widgets
 - iOS like settings - [flutter_cupertino_settings](https://github.com/matthinc/flutter_cupertino_settings)
+
+## Screenshots
+
+![screenshot][screenshots/1]
+![screenshot][screenshots/2]
+![screenshot][screenshots/3]
+![screenshot][screenshots/4]
